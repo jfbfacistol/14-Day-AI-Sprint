@@ -20,3 +20,19 @@ test_string_2 = "PHP 8,500,000.00  "
 
 print(f"Cleaned Data 1: {clean_property_price(test_string_1)}")
 print(f"Cleaned Data 2: {clean_property_price(test_string_2)}")
+
+# --- THE INTEGRATION BOSS FIGHT ---
+monthly_report = [
+    "PHP 45,000,000.00",
+    "  PHP 12,500,000.00 ",
+    "PHP 85,000,000.00",
+    "   PHP 5,000,000.00  "
+]
+
+for raw_string in monthly_report:
+    # Call the function to simply the cleaning
+    clean_number = clean_property_price(raw_string)
+    
+    print(f"Machine processed: {clean_number}")
+    
+print("--- Monthly Report Complete ---")
