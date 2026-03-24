@@ -78,3 +78,29 @@ print("--- Starting Defensive Batch Process ---")
 for item in broken_data:
     price = clean_property_price(item)
     print(f"Final Validated Price: {price}")
+    
+
+# The Scenario: The Footprint Scraper
+# Your cre-intelligence-platform successfully cleaned the prices, but now your manager needs the Gross Leasable Area (GLA) for the properties.
+# The PDF scraper pulled the floor areas, but the formatting is a disaster. Some have spaces, some have letters, and one is missing entirely.
+
+raw_sizes = [
+    "  1500 sqm",
+    "850 SQM",
+    "   2000sqm ",
+    "TBA"
+]
+
+def clean_floor_area(raw_data):
+    # Strip all leading and trailing whitespace. 
+    # Remove the lowercase letters "sqm", uppercase letters "SQM".
+    clean_text = raw_data.strip().replace("sqm", "").replace("SQM","")
+    # Defensive Check: If the string is "TBA", return 0.0.
+    if clean_text == "TBA":
+        return 0.0
+    # Cast the final cleaned string into a float and return it.
+    return float(clean_text)
+
+for raw_data in raw_sizes:
+    clean_area = clean_floor_area(raw_data)
+    print(f"Processed Area: {clean_area}")
