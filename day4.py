@@ -1,3 +1,5 @@
+# Day 4: Dictionary - navigating and creating dictionary
+
 # --- THE RAW DATA ---
 building_name = "Eastwood Global Plaza"
 raw_price = "  PHP 150,000,000.00 "
